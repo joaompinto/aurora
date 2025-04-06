@@ -1,0 +1,29 @@
+[project]
+name = "aurora"
+version = "0.1.0"
+description = "An agent framework with built-in tools."
+authors = [
+    { name = "João Pinto", email = "joao.pinto@gmail.com" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "rich",
+    "openai"
+]
+license = { text = "MIT" }
+readme = "README.md"
+keywords = ["agent", "framework", "tools", "automation"]
+homepage = "https://github.com/joaompinto/aurora"
+repository = "https://github.com/joaompinto/aurora"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.scripts]
+aurora = "aurora.__main__:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

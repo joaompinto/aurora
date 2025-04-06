@@ -89,9 +89,11 @@ class ToolHandler:
             return func(**args)
         except Exception as e:
             return f"Error executing tool '{tool_call.function.name}': {e}"
+
 import aurora.agent.tools.view_file
 import aurora.agent.tools.remove_file
 import aurora.agent.tools.create_file
 import aurora.agent.tools.replace_file
 import aurora.agent.tools.ask_user
-
+import aurora.agent.tools.create_directory
+import aurora.agent.tools.search_text

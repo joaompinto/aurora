@@ -1,5 +1,6 @@
 import os
 from aurora.agent.tool_handler import ToolHandler
+from aurora.agent.tools.rich_utils import print_info, print_success, print_error, format_path
 
 @ToolHandler.register_tool
 def create_file(path: str, content: str) -> str:
@@ -9,16 +10,16 @@ def create_file(path: str, content: str) -> str:
     path: The path of the file to create
     content: The content to write into the file
     """
-    print(f"📝 Creating file: '{path}' ... ", end="")
+    print_info(f"📝 Creating file: '{format_path(path)}' ... ")
     try:
         if os.path.isdir(path):
-            print("Error: is a directory")
-            return f"Cannot create file: '{path}' is an existing directory."
+            print_error("❌ Error: is a directory")
+            return f"❌ Cannot create file: '{path}' is an existing directory."
 
         with open(path, "w", encoding="utf-8") as f:
             f.write(content)
-        print("Success")
-        return f"Successfully created or overwritten the file at '{path}'."
+        print_success("✅ Success")
+        return f"✅ Successfully created or overwritten the file at '{path}'."
     except Exception as e:
-        print(f"Error: {e}")
-        return f"Failed to create or overwrite the file at '{path}': {e}"
+        print_error(f"❌ Error: {e}")
+        return f"❌ Failed to create or overwrite the file at '{path}': {e}"

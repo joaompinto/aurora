@@ -18,5 +18,5 @@ class Agent:
             self.client, self.model, self.tool_handler
         )
 
-    def run(self, messages, on_content=None, verbose_response=False):
+    def chat(self, messages, on_content=None, verbose_response=False):
         return self.conversation_handler.handle_conversation(messages, on_content=on_content, verbose_response=verbose_response)

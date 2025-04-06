@@ -1,5 +1,6 @@
 import os
 from aurora.agent.tool_handler import ToolHandler
+from aurora.agent.tools.rich_utils import print_info, print_success, print_error, format_path
 
 @ToolHandler.register_tool
 def remove_file(path: str) -> str:
@@ -8,11 +9,11 @@ def remove_file(path: str) -> str:
 
     path: The path of the file to remove
     """
-    print(f"🗑️ Removing file: '{path}' ... ", end="")
+    print_info(f"🗑️ Removing file: '{format_path(path)}' ... ")
     try:
         os.remove(path)
-        print("Success")
-        return f"Successfully deleted the file at '{path}'."
+        print_success("✅ Success")
+        return f"✅ Successfully deleted the file at '{path}'."
     except Exception as e:
-        print(f"Error: {e}")
-        return f"Failed to delete the file at '{path}': {e}"
+        print_error(f"❌ Error: {e}")
+        return f"❌ Failed to delete the file at '{path}': {e}"

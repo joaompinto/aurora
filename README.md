@@ -37,7 +37,9 @@ Aurora is a command-line AI agent designed to **edit code and manage files** usi
 - `--show-system`: Show model, parameters, and tool definitions, then exit.
 
 ## License
-Specify your license here.
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
+
 Pull requests and issues are welcome!

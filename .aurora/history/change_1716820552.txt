@@ -1,0 +1,3 @@
+Modified aurora/agent/tools/rich_utils.py:
+- Updated print_success to remove background color, now uses style 'bold green'
+- Updated print_error to remove background color, now uses style 'bold red'

@@ -1,0 +1,6 @@
+- Modified `aurora/agent/tools/rich_utils.py` to update output styles:
+  - stdout is now printed with **bold white text on a blue background**
+  - stderr is now printed with **bold white text on a red background**
+- Updated `docs/structure.md` to document the new bash output color scheme.
+
+This enhances readability of bash command outputs by clearly distinguishing stdout and stderr with colored backgrounds.

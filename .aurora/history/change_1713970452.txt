@@ -1,0 +1,2 @@
+- Added `print_bash_stdout` and `print_bash_stderr` functions to `aurora/agent/tools/rich_utils.py` for dedicated bash output styling.
+- Updated `aurora/agent/tools/bash_exec.py` to use these new functions instead of `print_success` and `print_error`.

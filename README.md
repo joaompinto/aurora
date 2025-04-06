@@ -1,4 +1,5 @@
-# Aurora AI Agent Framework
+# Aurora AI Command Line Agent (for openrouter/quasar-alpha)
+# ==========================
 
 Aurorsa is command line agent for natural language coding using the `openrouter/quasar-alpha` model
 

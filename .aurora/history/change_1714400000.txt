@@ -1,0 +1,12 @@
+Fix --show-system to respect saved config values for system prompt and role.
+
+- Before: --show-system only showed the passed --system-prompt or a default rendered prompt with --role (default 'software engineer').
+- After: --show-system now checks saved config values:
+  - If --system-prompt is passed, use it.
+  - Else, if 'system_prompt' exists in local/global config, use it.
+  - Else, render a prompt using:
+    - --role if passed
+    - else, saved 'role' from config
+    - else, fallback 'software engineer'.
+
+This makes --show-system output consistent with actual prompt behavior.

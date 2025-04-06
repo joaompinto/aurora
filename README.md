@@ -1,35 +1,40 @@
-# Aurora AI Command Line Agent (for openrouter/quasar-alpha)
-# ==========================
+# Aurora: Natural Language Code Editing Agent
 
-Aurorsa is command line agent for natural language coding using the `openrouter/quasar-alpha` model
+Aurora is a command-line AI agent designed to **edit code and manage files** using natural language instructions, powered by the `openrouter/quasar-alpha` model.
 
-## Features
-- **Command-Line Interface:** Run the agent with configurable arguments and API keys.
-- **Modular Agent Core:** Handles conversation management, tool dispatch, and agent logic.
-- **Built-in Tools:** File management, directory operations, user interaction, and search utilities.
-- **Extensible Design:** Easily add new tools or customize prompts.
+## Key Capabilities
 
-## Command-Line Options
-- `prompt` (positional): The prompt to send to the model (optional if using `--show-system`).
-- `-s`, `--system-prompt`: Provide an optional system prompt.
-- `--verbose-http`: Enable verbose HTTP logging.
-- `--verbose-http-raw`: Enable raw HTTP wire-level logging.
-- `--verbose-response`: Pretty print the full response object.
-- `--show-system`: Show model, parameters, system prompt, and tool definitions, then exit.
+- **Code Editing via Natural Language:** Modify, create, replace, or delete code files simply by describing the changes you want.
+- **File & Directory Management:** Seamlessly navigate, create, or remove files and folders within your project.
+- **Context-Aware Modifications:** Aurora understands your project structure to perform precise edits.
+- **Interactive User Prompts:** When clarification is needed, Aurora asks you before making changes.
+- **Extensible Tooling:** Built-in tools for file operations, with the ability to add more.
 
-## Getting Started
+## Usage
+
 1. **Install dependencies:**
    ```bash
    pip install -e .
    ```
-2. **Set your API key as an environment variable:**
+
+2. **Set your API key:**
    ```bash
    export OPENROUTER_API_KEY=YOUR_API_KEY
    ```
-3. **Run the agent:**
+
+3. **Run Aurora with your instruction:**
    ```bash
-   python -m aurora "Your prompt here"
+   python -m aurora "Add a function to parse JSON in utils.py"
    ```
+
+## Command-Line Options
+
+- `prompt` (positional): Your natural language instruction.
+- `-s`, `--system-prompt`: Custom system prompt.
+- `--verbose-http`: Enable HTTP request logging.
+- `--verbose-http-raw`: Enable raw HTTP wire-level logging.
+- `--verbose-response`: Pretty print the full response.
+- `--show-system`: Show model, parameters, and tool definitions, then exit.
 
 ## License
 Specify your license here.

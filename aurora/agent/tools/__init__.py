@@ -6,3 +6,4 @@ from .replace_file import *
 from .view_file import *
 from .find_files import *
 from .search_text import *
+from .bash_exec import *

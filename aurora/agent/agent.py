@@ -4,6 +4,14 @@ from openai import OpenAI
 from aurora.agent.conversation import ConversationHandler
 from aurora.agent.tool_handler import ToolHandler
 
+import aurora.agent.tools.view_file
+import aurora.agent.tools.remove_file
+import aurora.agent.tools.create_file
+import aurora.agent.tools.replace_file
+import aurora.agent.tools.ask_user
+import aurora.agent.tools.create_directory
+import aurora.agent.tools.search_text
+
 class Agent:
     def __init__(self, api_key: str, model: str = "openrouter/quasar-alpha", system_prompt: str | None = None):
         self.api_key = api_key

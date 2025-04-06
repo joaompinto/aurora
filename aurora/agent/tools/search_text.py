@@ -1,8 +1,10 @@
 import os
 import re
 import fnmatch
+from aurora.agent.tool_handler import ToolHandler
+from aurora.agent.tools.rich_utils import print_info, print_success, print_error, format_path, format_number
 
-
+@ToolHandler.register_tool
 def search_text(directory: str, file_pattern: str, text_pattern: str, case_sensitive: bool = False, max_matches: int = 1000):
     """
     directory: Root directory to search.
@@ -11,23 +13,30 @@ def search_text(directory: str, file_pattern: str, text_pattern: str, case_sensi
     case_sensitive: Whether the search is case sensitive.
     max_matches: Maximum number of matches to return.
 
-    Returns a list of matches in 'filepath:line_number:matched_line' format.
+    Returns a string with matches, each in 'filepath:line_number:matched_line' format, separated by newlines.
     """
+    print_info(f"🔎 Searching for pattern '{text_pattern}' in files under '{format_path(directory)}' matching '{file_pattern}' ...")
     flags = 0 if case_sensitive else re.IGNORECASE
     regex = re.compile(text_pattern, flags)
     results = []
 
-    for root, _, files in os.walk(directory):
-        for filename in fnmatch.filter(files, file_pattern):
-            filepath = os.path.join(root, filename)
-            try:
-                with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-                    for lineno, line in enumerate(f, start=1):
-                        if regex.search(line):
-                            results.append(f"{filepath}:{lineno}:{line.rstrip()}")
-                            if len(results) >= max_matches:
-                                return results
-            except Exception:
-                continue  # Ignore unreadable files
+    try:
+        for root, _, files in os.walk(directory):
+            for filename in fnmatch.filter(files, file_pattern):
+                filepath = os.path.join(root, filename)
+                try:
+                    with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                        for lineno, line in enumerate(f, start=1):
+                            if regex.search(line):
+                                results.append(f"{filepath}:{lineno}:{line.rstrip()}")
+                                if len(results) >= max_matches:
+                                    print_success(f"✅ Found {format_number(len(results))} matches (limit reached)")
+                                    return "\n".join(results)
+                except Exception as e:
+                    print_error(f"❌ Error reading file '{filepath}': {e}")
+                    continue  # Ignore unreadable files
+        print_success(f"✅ Found {format_number(len(results))} matches")
+    except Exception as e:
+        print_error(f"❌ Error during search: {e}")
 
-    return results
+    return "\n".join(results)
